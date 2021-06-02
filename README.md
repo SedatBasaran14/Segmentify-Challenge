@@ -11,3 +11,9 @@ $ open http://localhost:8000
 
 ## Test
 https://sedatbasaran14.github.io/Segmentify-Challenge/
+
+## Technologies & Tools
+-JQuery
+-Bootstrap
+-HandleBars
+-Glide
