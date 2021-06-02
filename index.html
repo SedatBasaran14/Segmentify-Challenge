@@ -63,7 +63,21 @@
                     new Glide('.glide', {
                         type: 'carousel',
                         startAt: 0,
-                        perView: 5
+                        perView: 5,
+                        breakpoints: {
+                            1000: {
+                                perView: 4
+                            },
+                            800: {
+                                perView: 3
+                            },
+                            600: {
+                                perView: 2
+                            },
+                            400: {
+                                perView: 1
+                            }
+                        }
                     }).mount()
 
                 }
