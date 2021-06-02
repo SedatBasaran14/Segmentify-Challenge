@@ -9,3 +9,5 @@ $ python -m http.server
 $ open http://localhost:8000
 ```
 
+## Test
+https://sedatbasaran14.github.io/Segmentify-Challenge/
