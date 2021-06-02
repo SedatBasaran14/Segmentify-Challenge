@@ -26,15 +26,15 @@
         <ul class="glide__slides">
             {{# each products}}
             <li class="glide__slide">
-                <div class="card" style="width: 18rem; height: 35rem;">
+                <div class="card" style="width: 18rem; height: 38rem;">
                     <div class="text-center bg-img">
                         <img style=" width: 150px; height: 350px; " src={{this.image}} class="spec-img" alt="...">
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title text-center">{{this.name}}</h5>
-                        <small class="card-text text-center"><span> {{this.params.land}} </span> 
-              <span> {{this.params.region}} </span>
-              <span> {{this.params.art}} </span> </small>
+                        <h5 class="card-title text-center" style="height:5rem;">{{this.name}}</h5>
+                        <div class="text-center" style="height:5rem;"> <small class="card-text"><span> {{this.params.land}} </span> -
+              <span> {{this.params.region}} </span> -
+              <span> {{this.params.art}} </span> </small> </div>
                         <h5 class="text-center"><b>{{this.priceText}}</b> <del>{{this.oldPriceText}}</del></h5>
                     </div>
                 </div>
