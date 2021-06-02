@@ -1,0 +1,77 @@
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.core.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Segmentify Challenge</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="glide mt-3">
+            <div class="glide__track" id="glide__track" data-glide-el="track">
+            </div>
+            <div class="glide__arrows text-center" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left btn btn-primary" data-glide-dir="<">prev</button>
+                <button class="glide__arrow glide__arrow--right btn btn-primary" data-glide-dir=">">next</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script id="glide__track-template" type="text/x-handlebars-template">
+        <ul class="glide__slides">
+            {{# each products}}
+            <li class="glide__slide">
+                <div class="card" style="width: 18rem; height: 35rem;">
+                    <div class="text-center bg-img">
+                        <img style=" width: 150px; height: 350px; " src={{this.image}} class="spec-img" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{this.name}}</h5>
+                        <small class="card-text"><span> {{this.params.land}} </span> 
+              <span> {{this.params.region}} </span>
+              <span> {{this.params.art}} </span> </small>
+                        <h5 class="text-center"><b>{{this.priceText}}</b> <del>{{this.oldPriceText}}</del></h5>
+                    </div>
+                </div>
+
+            </li>
+            {{/each}}
+
+        </ul>
+    </script>
+    <script>
+        var $products = $('#products')
+        $(document).ready(function() {
+
+            $.ajax({
+                type: "get",
+                dataType: "json",
+                url: "products.json",
+                success: function(products) {
+                    var theScriptHtml = $("#glide__track-template")[0].innerHTML;
+                    var theTemplate = Handlebars.compile(theScriptHtml);
+                    var contexObj = theTemplate({
+                        products: products
+                    });
+                    $("#glide__track").append(contexObj);
+
+                    new Glide('.glide', {
+                        type: 'carousel',
+                        startAt: 0,
+                        perView: 5
+                    }).mount()
+
+                }
+            });
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/glide.min.js"></script>
+
+</body>
+
+</html>
